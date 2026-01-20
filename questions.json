@@ -1,0 +1,819 @@
+[
+  {
+    "question": "What is the system of government in the United Kingdom?",
+    "options": [
+      "Presidential republic",
+      "Constitutional monarchy",
+      "Federal republic",
+      "Absolute monarchy"
+    ],
+    "answer": "Constitutional monarchy",
+    "answerDesc": "The UK is a constitutional monarchy, meaning the monarch is head of state but political power is exercised by an elected government."
+  },
+  {
+    "question": "Who is the head of state in the United Kingdom?",
+    "options": [
+      "The Prime Minister",
+      "The Speaker of the House of Commons",
+      "The Monarch",
+      "The Lord Chancellor"
+    ],
+    "answer": "The Monarch",
+    "answerDesc": "The monarch is the ceremonial head of state, while executive power is exercised by the government."
+  },
+  {
+    "question": "Who appoints the Prime Minister of the United Kingdom?",
+    "options": [
+      "The House of Lords",
+      "The Monarch",
+      "The Supreme Court",
+      "The Cabinet"
+    ],
+    "answer": "The Monarch",
+    "answerDesc": "The monarch appoints the Prime Minister, who is usually the leader of the political party with the most seats in the House of Commons."
+  },
+  {
+    "question": "Which body is responsible for making laws in the UK?",
+    "options": [
+      "The Supreme Court",
+      "The Cabinet",
+      "Parliament",
+      "Local councils"
+    ],
+    "answer": "Parliament",
+    "answerDesc": "Parliament is responsible for debating, passing, and amending laws."
+  },
+  {
+    "question": "What are the three parts of the UK Parliament?",
+    "options": [
+      "The Monarch, House of Commons, House of Lords",
+      "The Prime Minister, Cabinet, Supreme Court",
+      "The House of Commons, Cabinet, Monarch",
+      "The Supreme Court, House of Lords, Cabinet"
+    ],
+    "answer": "The Monarch, House of Commons, House of Lords",
+    "answerDesc": "All three parts are required for legislation to become law."
+  },
+  {
+    "question": "Members of the House of Commons are elected by whom?",
+    "options": [
+      "The Monarch",
+      "Registered voters",
+      "Local councils",
+      "The Prime Minister"
+    ],
+    "answer": "Registered voters",
+    "answerDesc": "Members of Parliament (MPs) are elected by the public in general elections."
+  },
+  {
+    "question": "How often must a general election be held in the UK?",
+    "options": [
+      "Every 3 years",
+      "Every 4 years",
+      "At least every 5 years",
+      "Every 10 years"
+    ],
+    "answer": "At least every 5 years",
+    "answerDesc": "A general election must be held at least every five years unless called earlier."
+  },
+  {
+    "question": "What is the main role of the Prime Minister?",
+    "options": [
+      "To represent the monarch internationally",
+      "To lead the government",
+      "To preside over the courts",
+      "To manage local councils"
+    ],
+    "answer": "To lead the government",
+    "answerDesc": "The Prime Minister leads the government, sets policy direction, and chairs the Cabinet."
+  },
+  {
+    "question": "Which body examines the work of the government and proposes changes to laws?",
+    "options": [
+      "The Supreme Court",
+      "The House of Lords",
+      "Local authorities",
+      "The police"
+    ],
+    "answer": "The House of Lords",
+    "answerDesc": "The House of Lords reviews legislation and suggests amendments."
+  },
+  {
+    "question": "What is the role of the Cabinet?",
+    "options": [
+      "To interpret the law",
+      "To advise local councils",
+      "To make key government decisions",
+      "To manage elections"
+    ],
+    "answer": "To make key government decisions",
+    "answerDesc": "The Cabinet is made up of senior ministers who decide government policy."
+  },
+  {
+    "question": "Who is responsible for enforcing the law in the UK?",
+    "options": [
+      "The police",
+      "Parliament",
+      "The Monarch",
+      "The Cabinet"
+    ],
+    "answer": "The police",
+    "answerDesc": "The police are responsible for maintaining law and order."
+  },
+  {
+    "question": "Which court is the highest court in the UK?",
+    "options": [
+      "Crown Court",
+      "Magistrates’ Court",
+      "High Court",
+      "Supreme Court"
+    ],
+    "answer": "Supreme Court",
+    "answerDesc": "The Supreme Court is the final court of appeal in the UK."
+  },
+  {
+    "question": "What age must you be to vote in a UK general election?",
+    "options": [
+      "16",
+      "17",
+      "18",
+      "21"
+    ],
+    "answer": "18",
+    "answerDesc": "You must be 18 or over and registered to vote in a general election."
+  },
+  {
+    "question": "What does the rule of law mean?",
+    "options": [
+      "Only judges must follow the law",
+      "The government can act above the law",
+      "Everyone is subject to the law",
+      "Only citizens must follow the law"
+    ],
+    "answer": "Everyone is subject to the law",
+    "answerDesc": "The rule of law means that the law applies equally to all people."
+  },
+  {
+    "question": "Which document established limits on the power of the monarch in 1215?",
+    "options": [
+      "The Bill of Rights",
+      "The Magna Carta",
+      "The Act of Union",
+      "The Human Rights Act"
+    ],
+    "answer": "The Magna Carta",
+    "answerDesc": "The Magna Carta established that the monarch must follow the law."
+  },
+  {
+    "question": "What is a jury?",
+    "options": [
+      "A group of judges",
+      "A group of lawyers",
+      "A group of citizens who decide a case",
+      "A group of police officers"
+    ],
+    "answer": "A group of citizens who decide a case",
+    "answerDesc": "A jury listens to evidence and decides the verdict in certain court cases."
+  },
+  {
+    "question": "Which religion has the largest number of followers in the UK?",
+    "options": [
+      "Islam",
+      "Judaism",
+      "Christianity",
+      "Hinduism"
+    ],
+    "answer": "Christianity",
+    "answerDesc": "Christianity is the largest religion in the UK."
+  },
+  {
+    "question": "What is freedom of speech?",
+    "options": [
+      "The right to say anything without consequence",
+      "The right to express opinions within the law",
+      "The right to vote",
+      "The right to protest without permission"
+    ],
+    "answer": "The right to express opinions within the law",
+    "answerDesc": "Freedom of speech allows people to express views while respecting the law and others’ rights."
+  },
+  {
+    "question": "Which service provides healthcare free at the point of use in the UK?",
+    "options": [
+      "Private hospitals",
+      "Local councils",
+      "The NHS",
+      "The Red Cross"
+    ],
+    "answer": "The NHS",
+    "answerDesc": "The National Health Service provides healthcare funded through taxation."
+  },
+  {
+    "question": "Who is responsible for education services in local areas?",
+    "options": [
+      "The Monarch",
+      "Local councils",
+      "The Supreme Court",
+      "The police"
+    ],
+    "answer": "Local councils",
+    "answerDesc": "Local councils manage schools and education services in their area."
+  },
+  {
+    "question": "What is the purpose of paying taxes?",
+    "options": [
+      "To fund public services",
+      "To support private companies",
+      "To pay the monarch",
+      "To reduce immigration"
+    ],
+    "answer": "To fund public services",
+    "answerDesc": "Taxes fund services such as healthcare, education, and policing."
+  },
+  {
+    "question": "What is the national anthem of the United Kingdom?",
+    "options": [
+      "Rule, Britannia!",
+      "God Save the King",
+      "Land of Hope and Glory",
+      "Jerusalem"
+    ],
+    "answer": "God Save the King",
+    "answerDesc": "God Save the King is the national anthem of the UK."
+  },
+  {
+    "question": "Which flower is traditionally associated with England?",
+    "options": [
+      "Thistle",
+      "Daffodil",
+      "Rose",
+      "Shamrock"
+    ],
+    "answer": "Rose",
+    "answerDesc": "The rose is the national flower of England."
+  },
+  {
+    "question": "Which flower represents Scotland?",
+    "options": [
+      "Rose",
+      "Daffodil",
+      "Shamrock",
+      "Thistle"
+    ],
+    "answer": "Thistle",
+    "answerDesc": "The thistle is the national flower of Scotland."
+  },
+  {
+    "question": "Which holiday celebrates the birth of Jesus Christ?",
+    "options": [
+      "Easter",
+      "Christmas",
+      "Good Friday",
+      "Pentecost"
+    ],
+    "answer": "Christmas",
+    "answerDesc": "Christmas is a public holiday celebrating the birth of Jesus Christ."
+  },
+
+  {
+    "question": "Which country is NOT part of the United Kingdom?",
+    "options": [
+      "England",
+      "Scotland",
+      "Wales",
+      "Republic of Ireland"
+    ],
+    "answer": "Republic of Ireland",
+    "answerDesc": "The United Kingdom consists of England, Scotland, Wales, and Northern Ireland."
+  },
+  {
+    "question": "What is the capital city of the United Kingdom?",
+    "options": [
+      "Manchester",
+      "Edinburgh",
+      "London",
+      "Cardiff"
+    ],
+    "answer": "London",
+    "answerDesc": "London is the capital city of the United Kingdom and the seat of government."
+  },
+  {
+    "question": "What is the capital city of Scotland?",
+    "options": [
+      "Glasgow",
+      "Edinburgh",
+      "Aberdeen",
+      "Dundee"
+    ],
+    "answer": "Edinburgh",
+    "answerDesc": "Edinburgh is the capital city of Scotland."
+  },
+  {
+    "question": "What is the capital city of Wales?",
+    "options": [
+      "Swansea",
+      "Newport",
+      "Cardiff",
+      "Wrexham"
+    ],
+    "answer": "Cardiff",
+    "answerDesc": "Cardiff is the capital city of Wales."
+  },
+  {
+    "question": "What is the capital city of Northern Ireland?",
+    "options": [
+      "Derry",
+      "Belfast",
+      "Lisburn",
+      "Newry"
+    ],
+    "answer": "Belfast",
+    "answerDesc": "Belfast is the capital city of Northern Ireland."
+  },
+  {
+    "question": "Which UK country has its own devolved parliament?",
+    "options": [
+      "England",
+      "Scotland",
+      "Both England and Scotland",
+      "England and Wales"
+    ],
+    "answer": "Scotland",
+    "answerDesc": "Scotland has its own devolved parliament with powers over certain domestic issues."
+  },
+  {
+    "question": "What is devolution?",
+    "options": [
+      "The transfer of power to local councils only",
+      "The sharing of power between the UK and EU",
+      "The transfer of certain powers from the UK Parliament",
+      "The removal of the monarchy"
+    ],
+    "answer": "The transfer of certain powers from the UK Parliament",
+    "answerDesc": "Devolution allows Scotland, Wales, and Northern Ireland to make decisions on some local matters."
+  },
+  {
+    "question": "Which areas are usually controlled by devolved governments?",
+    "options": [
+      "Defence and foreign policy",
+      "Immigration and taxation",
+      "Education and health",
+      "International trade"
+    ],
+    "answer": "Education and health",
+    "answerDesc": "Education and health are examples of matters often controlled by devolved administrations."
+  },
+  {
+    "question": "Which language has official status in Wales?",
+    "options": [
+      "Irish",
+      "Scottish Gaelic",
+      "Welsh",
+      "Cornish"
+    ],
+    "answer": "Welsh",
+    "answerDesc": "Welsh is an official language of Wales and is widely taught and used."
+  },
+  {
+    "question": "Which language is traditionally spoken in parts of Scotland?",
+    "options": [
+      "Welsh",
+      "Irish",
+      "Scottish Gaelic",
+      "Manx"
+    ],
+    "answer": "Scottish Gaelic",
+    "answerDesc": "Scottish Gaelic is spoken mainly in parts of Scotland, particularly the Highlands and Islands."
+  },
+  {
+    "question": "Which language is associated with Northern Ireland?",
+    "options": [
+      "Welsh",
+      "Irish",
+      "Cornish",
+      "Scots"
+    ],
+    "answer": "Irish",
+    "answerDesc": "Irish is one of the languages associated with Northern Ireland."
+  },
+  {
+    "question": "Which symbol is traditionally associated with Wales?",
+    "options": [
+      "The rose",
+      "The thistle",
+      "The shamrock",
+      "The daffodil"
+    ],
+    "answer": "The daffodil",
+    "answerDesc": "The daffodil is a national symbol of Wales."
+  },
+  {
+    "question": "Which symbol is traditionally associated with Northern Ireland?",
+    "options": [
+      "The rose",
+      "The shamrock",
+      "The thistle",
+      "The daffodil"
+    ],
+    "answer": "The shamrock",
+    "answerDesc": "The shamrock is a traditional symbol of Northern Ireland."
+  },
+  {
+    "question": "What is the Union Flag commonly known as?",
+    "options": [
+      "The Royal Flag",
+      "The National Banner",
+      "The Union Jack",
+      "The Crown Flag"
+    ],
+    "answer": "The Union Jack",
+    "answerDesc": "The Union Flag is commonly known as the Union Jack."
+  },
+  {
+    "question": "Which saint is the patron saint of England?",
+    "options": [
+      "St Patrick",
+      "St Andrew",
+      "St George",
+      "St David"
+    ],
+    "answer": "St George",
+    "answerDesc": "St George is the patron saint of England."
+  },
+  {
+    "question": "Which saint is the patron saint of Scotland?",
+    "options": [
+      "St George",
+      "St Andrew",
+      "St David",
+      "St Patrick"
+    ],
+    "answer": "St Andrew",
+    "answerDesc": "St Andrew is the patron saint of Scotland."
+  },
+  {
+    "question": "Which saint is the patron saint of Wales?",
+    "options": [
+      "St Patrick",
+      "St Andrew",
+      "St George",
+      "St David"
+    ],
+    "answer": "St David",
+    "answerDesc": "St David is the patron saint of Wales."
+  },
+  {
+    "question": "Which saint is the patron saint of Northern Ireland?",
+    "options": [
+      "St George",
+      "St Andrew",
+      "St Patrick",
+      "St David"
+    ],
+    "answer": "St Patrick",
+    "answerDesc": "St Patrick is the patron saint of Northern Ireland."
+  },
+  {
+    "question": "Which day is St George’s Day celebrated?",
+    "options": [
+      "1 March",
+      "17 March",
+      "23 April",
+      "30 November"
+    ],
+    "answer": "23 April",
+    "answerDesc": "St George’s Day is celebrated on 23 April."
+  },
+  {
+    "question": "Which day is St Andrew’s Day celebrated?",
+    "options": [
+      "23 April",
+      "30 November",
+      "1 March",
+      "17 March"
+    ],
+    "answer": "30 November",
+    "answerDesc": "St Andrew’s Day is celebrated on 30 November."
+  },
+  {
+    "question": "Which day is St David’s Day celebrated?",
+    "options": [
+      "1 March",
+      "17 March",
+      "23 April",
+      "30 November"
+    ],
+    "answer": "1 March",
+    "answerDesc": "St David’s Day is celebrated on 1 March."
+  },
+  {
+    "question": "Which day is St Patrick’s Day celebrated?",
+    "options": [
+      "1 March",
+      "17 March",
+      "23 April",
+      "30 November"
+    ],
+    "answer": "17 March",
+    "answerDesc": "St Patrick’s Day is celebrated on 17 March."
+  },
+  {
+    "question": "What is the population of the UK approximately?",
+    "options": [
+      "40 million",
+      "50 million",
+      "67 million",
+      "80 million"
+    ],
+    "answer": "67 million",
+    "answerDesc": "The UK population is approximately 67 million."
+  },
+  {
+    "question": "What currency is used throughout the United Kingdom?",
+    "options": [
+      "Euro",
+      "Pound sterling",
+      "US dollar",
+      "Franc"
+    ],
+    "answer": "Pound sterling",
+    "answerDesc": "The pound sterling is the official currency of the United Kingdom."
+  },
+  {
+    "question": "Which organisation is responsible for issuing UK passports?",
+    "options": [
+      "The Home Office",
+      "Local councils",
+      "The NHS",
+      "The Supreme Court"
+    ],
+    "answer": "The Home Office",
+    "answerDesc": "The Home Office is responsible for passports, immigration, and security."
+  },
+  {
+    "question": "Which UK body is responsible for collecting taxes?",
+    "options": [
+      "The Treasury",
+      "HM Revenue and Customs",
+      "The Home Office",
+      "Local councils"
+    ],
+    "answer": "HM Revenue and Customs",
+    "answerDesc": "HM Revenue and Customs (HMRC) is responsible for collecting taxes and customs duties."
+  },
+  {
+    "question": "What is the role of the Chancellor of the Exchequer?",
+    "options": [
+      "To manage the NHS",
+      "To oversee defence",
+      "To manage the economy and public finances",
+      "To represent the monarch"
+    ],
+    "answer": "To manage the economy and public finances",
+    "answerDesc": "The Chancellor of the Exchequer is responsible for economic policy, taxation, and government spending."
+  },
+  {
+    "question": "What is the name of the official residence of the Prime Minister?",
+    "options": [
+      "Buckingham Palace",
+      "10 Downing Street",
+      "Windsor Castle",
+      "Whitehall"
+    ],
+    "answer": "10 Downing Street",
+    "answerDesc": "10 Downing Street in London is the official residence of the Prime Minister."
+  },
+  {
+    "question": "What is the main role of the civil service?",
+    "options": [
+      "To create laws",
+      "To advise ministers and implement policy",
+      "To represent voters",
+      "To manage elections"
+    ],
+    "answer": "To advise ministers and implement policy",
+    "answerDesc": "The civil service supports the government by providing advice and delivering public services."
+  },
+  {
+    "question": "Which group forms the opposition in the UK Parliament?",
+    "options": [
+      "The House of Lords",
+      "The largest party not in government",
+      "All minor parties",
+      "Local councillors"
+    ],
+    "answer": "The largest party not in government",
+    "answerDesc": "The opposition challenges and scrutinises the work of the government."
+  },
+  {
+    "question": "What is the role of the Speaker of the House of Commons?",
+    "options": [
+      "To lead the government",
+      "To represent the monarch",
+      "To keep order during debates",
+      "To propose new laws"
+    ],
+    "answer": "To keep order during debates",
+    "answerDesc": "The Speaker ensures debates are conducted fairly and according to the rules."
+  },
+  {
+    "question": "Which party forms the government after a general election?",
+    "options": [
+      "The party with the most votes nationwide",
+      "The party chosen by the monarch",
+      "The party with the most seats in the House of Commons",
+      "The oldest political party"
+    ],
+    "answer": "The party with the most seats in the House of Commons",
+    "answerDesc": "The party with the majority of MPs usually forms the government."
+  },
+  {
+    "question": "What is a by-election?",
+    "options": [
+      "An election held every five years",
+      "An election to replace a local councillor",
+      "An election held when an MP leaves Parliament",
+      "An election for the House of Lords"
+    ],
+    "answer": "An election held when an MP leaves Parliament",
+    "answerDesc": "A by-election is held to fill a vacant seat in the House of Commons."
+  },
+  {
+    "question": "Which voting system is used in UK general elections?",
+    "options": [
+      "Proportional representation",
+      "First past the post",
+      "Single transferable vote",
+      "Two-round system"
+    ],
+    "answer": "First past the post",
+    "answerDesc": "The candidate with the most votes in each constituency wins."
+  },
+  {
+    "question": "Who can stand for election as a Member of Parliament?",
+    "options": [
+      "Any UK resident",
+      "British citizens and qualifying Commonwealth or Irish citizens",
+      "Only members of political parties",
+      "Only people over 30"
+    ],
+    "answer": "British citizens and qualifying Commonwealth or Irish citizens",
+    "answerDesc": "Certain citizenship and age requirements must be met to stand as an MP."
+  },
+  {
+    "question": "What is the purpose of a constituency?",
+    "options": [
+      "To elect local councillors",
+      "To organise political parties",
+      "To elect one Member of Parliament",
+      "To manage public services"
+    ],
+    "answer": "To elect one Member of Parliament",
+    "answerDesc": "Each constituency is represented by one MP in the House of Commons."
+  },
+  {
+    "question": "Which organisation oversees elections in the UK?",
+    "options": [
+      "The Cabinet",
+      "The Supreme Court",
+      "The Electoral Commission",
+      "Local councils"
+    ],
+    "answer": "The Electoral Commission",
+    "answerDesc": "The Electoral Commission ensures elections are fair and well run."
+  },
+  {
+    "question": "What is the purpose of the census?",
+    "options": [
+      "To collect tax information",
+      "To count the population",
+      "To record voting preferences",
+      "To issue identity documents"
+    ],
+    "answer": "To count the population",
+    "answerDesc": "The census collects information about the population to help plan public services."
+  },
+  {
+    "question": "How often is the census carried out in the UK?",
+    "options": [
+      "Every 5 years",
+      "Every 10 years",
+      "Every 15 years",
+      "Every 20 years"
+    ],
+    "answer": "Every 10 years",
+    "answerDesc": "The census is normally carried out every ten years."
+  },
+  {
+    "question": "Which organisation produces official statistics in the UK?",
+    "options": [
+      "The Treasury",
+      "The Office for National Statistics",
+      "HM Revenue and Customs",
+      "The Home Office"
+    ],
+    "answer": "The Office for National Statistics",
+    "answerDesc": "The ONS produces statistics on population, economy, and society."
+  },
+  {
+    "question": "What is the minimum school leaving age in the UK?",
+    "options": [
+      "15",
+      "16",
+      "17",
+      "18"
+    ],
+    "answer": "16",
+    "answerDesc": "Young people must stay in education or training until age 18, but may leave school at 16."
+  },
+  {
+    "question": "Which qualification do students usually take at age 16?",
+    "options": [
+      "A-levels",
+      "Degrees",
+      "GCSEs",
+      "NVQs"
+    ],
+    "answer": "GCSEs",
+    "answerDesc": "GCSEs are typically taken by students at age 16."
+  },
+  {
+    "question": "What age group usually studies for A-levels?",
+    "options": [
+      "14–16",
+      "16–18",
+      "18–21",
+      "21–25"
+    ],
+    "answer": "16–18",
+    "answerDesc": "A-levels are normally studied between the ages of 16 and 18."
+  },
+  {
+    "question": "Which body funds state schools in England?",
+    "options": [
+      "Local councils",
+      "The NHS",
+      "The police",
+      "Private companies"
+    ],
+    "answer": "Local councils",
+    "answerDesc": "Local councils are responsible for funding and managing state schools."
+  },
+  {
+    "question": "What is the main purpose of higher education?",
+    "options": [
+      "To provide compulsory schooling",
+      "To prepare students for primary school",
+      "To offer advanced study and qualifications",
+      "To train teachers only"
+    ],
+    "answer": "To offer advanced study and qualifications",
+    "answerDesc": "Higher education includes universities and colleges offering advanced learning."
+  },
+  {
+    "question": "Which type of institution offers degree-level education?",
+    "options": [
+      "Primary schools",
+      "Secondary schools",
+      "Universities",
+      "Local councils"
+    ],
+    "answer": "Universities",
+    "answerDesc": "Universities provide undergraduate and postgraduate degrees."
+  },
+  {
+    "question": "Which body is responsible for healthcare policy in England?",
+    "options": [
+      "Local councils",
+      "The NHS",
+      "The UK government",
+      "The Supreme Court"
+    ],
+    "answer": "The UK government",
+    "answerDesc": "Healthcare policy in England is set by the UK government."
+  },
+  {
+    "question": "What does the NHS provide?",
+    "options": [
+      "Private healthcare only",
+      "Healthcare free at the point of use",
+      "Healthcare only for workers",
+      "Emergency services only"
+    ],
+    "answer": "Healthcare free at the point of use",
+    "answerDesc": "The NHS provides healthcare funded through taxation."
+  },
+  {
+    "question": "Which service should be contacted in an emergency?",
+    "options": [
+      "101",
+      "999",
+      "111",
+      "112"
+    ],
+    "answer": "999",
+    "answerDesc": "999 is the main emergency number in the UK."
+  }
+]
+
+
