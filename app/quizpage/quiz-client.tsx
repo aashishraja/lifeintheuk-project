@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Question } from "@prisma/client"
+import type { Question } from "../generated/prisma/client"
 import { saveResult } from "./actions"
 
 const QUIZ_STORAGE_KEY = "quiz-progress"
