@@ -13,8 +13,18 @@ datasource db {
   provider = "postgresql"
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
+model Question {
+  id         Int      @id @default(autoincrement())
+  question   String
+  options    String[]           // multiple choice options
+  answer     String             // the correct option
+  answerDesc String?            // optional explanation for why it's correct
+  createdAt  DateTime @default(now())
+}
+
+model QuizResult {
+  id        Int      @id @default(autoincrement())
+  score     Int
+  total     Int
+  createdAt DateTime @default(now())
 }
