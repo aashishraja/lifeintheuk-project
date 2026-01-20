@@ -284,11 +284,14 @@ export default function QuizClient({
           </button>
 
           <button
-            onClick={quitQuiz}
-            className="px-4 py-2 border rounded"
-          >
-            Menu
-          </button>
+  onClick={quitQuiz}
+  className="relative px-8 py-3 bg-black text-white font-semibold rounded-lg border-2 border-purple-500 hover:border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_10px_rgba(168,85,247,0.6)] active:scale-95 active:shadow-[0_0_10px_5px_rgba(168,85,247,0.4)] group"
+>
+  <span className="relative z-10">Menu</span>
+
+  <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-r from-purple-500/20 to-indigo-500/20" />
+</button>
+
         </div>
       </div>
 
