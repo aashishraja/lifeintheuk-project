@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Question } from "../generated/prisma/client"
+import { Question } from "@prisma/client"
 import { saveResult } from "./actions"
 
 const QUIZ_STORAGE_KEY = "quiz-progress"
@@ -21,6 +21,7 @@ export default function QuizClient({
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [finished, setFinished] = useState(false)
+  const [resultSaved, setResultSaved] = useState(false)
 
   const [startTime, setStartTime] = useState<number | null>(null)
   const [remainingTime, setRemainingTime] = useState(DURATION_SECONDS)
@@ -88,13 +89,43 @@ export default function QuizClient({
     return () => clearInterval(interval)
   }, [startTime, finished])
 
-  // ---------------- SAVE RESULT + CLEANUP ----------------
-  useEffect(() => {
-    if (finished) {
-      saveResult(score(), selectedQuestions.length)
-      localStorage.removeItem(QUIZ_STORAGE_KEY)
+  // ---------------- SAVE RESULT ----------------
+  async function submitResult() {
+    try {
+      await saveResult(score(), selectedQuestions.length)
+    } catch (err) {
+      console.error("Failed to save quiz result", err)
     }
-  }, [finished])
+  }
+
+  useEffect(() => {
+    if (!finished || resultSaved) return
+
+    submitResult()
+    setResultSaved(true)
+    localStorage.removeItem(QUIZ_STORAGE_KEY)
+  }, [finished, resultSaved])
+
+  // ---------------- QUIT QUIZ ----------------
+  function quitQuiz() {
+    const confirmQuit = window.confirm(
+      "Are you sure you want to quit? Your progress will be lost."
+    )
+
+    if (!confirmQuit) return
+
+    localStorage.removeItem(QUIZ_STORAGE_KEY)
+
+    setSelectedQuestions([])
+    setCurrentIndex(0)
+    setAnswers({})
+    setFinished(false)
+    setResultSaved(false)
+    setStartTime(null)
+    setRemainingTime(DURATION_SECONDS)
+
+    router.push("/")
+  }
 
   if (selectedQuestions.length === 0) {
     return <div className="p-6">Loading quiz...</div>
@@ -124,10 +155,6 @@ export default function QuizClient({
     }
   }
 
-  function goToMenu() {
-    router.push("/")
-  }
-
   function score() {
     return selectedQuestions.filter(
       q => answers[q.id] === q.answer
@@ -148,7 +175,7 @@ export default function QuizClient({
   if (finished) {
     return (
       <div className="p-4 md:p-8 space-y-4 max-w-3xl mx-auto">
-        <button onClick={goToMenu} className="underline">
+        <button onClick={quitQuiz} className="underline">
           ← Back to menu
         </button>
 
@@ -203,7 +230,6 @@ export default function QuizClient({
   // ---------------- QUESTION VIEW ----------------
   return (
     <div className="flex flex-col md:flex-row h-full">
-      {/* QUESTION */}
       <div className="md:w-1/2 p-4 md:p-8 border-b md:border-b-0 md:border-r flex flex-col gap-4">
         <p className="text-sm font-medium text-red-600">
           Time remaining: {formatTime(remainingTime)}
@@ -227,7 +253,7 @@ export default function QuizClient({
           </button>
 
           <button
-            onClick={goToMenu}
+            onClick={quitQuiz}
             className="px-4 py-2 border rounded"
           >
             Menu
@@ -235,10 +261,9 @@ export default function QuizClient({
         </div>
       </div>
 
-      {/* ANSWERS */}
       <div className="md:w-1/2 p-4 md:p-8 flex flex-col gap-6">
         <ul className="space-y-3">
-          {currentQuestion.options.map(option => (
+          {currentQuestion.options.map((option: string) => (
             <li key={option}>
               <label className="flex items-center gap-3 p-3 border rounded cursor-pointer active:bg-gray-100">
                 <input
