@@ -26,6 +26,20 @@ export default function QuizClient({
   const [startTime, setStartTime] = useState<number | null>(null)
   const [remainingTime, setRemainingTime] = useState(DURATION_SECONDS)
 
+  // ---------------- TEXT TO SPEECH ----------------
+  function speak(text: string) {
+    if (!("speechSynthesis" in window)) return
+
+    window.speechSynthesis.cancel()
+
+    const utterance = new SpeechSynthesisUtterance(text)
+    utterance.lang = "en-GB"
+    utterance.rate = 1
+    utterance.pitch = 1
+
+    window.speechSynthesis.speak(utterance)
+  }
+
   // ---------------- LOAD OR CREATE QUIZ ----------------
   useEffect(() => {
     const saved = localStorage.getItem(QUIZ_STORAGE_KEY)
@@ -53,6 +67,16 @@ export default function QuizClient({
     setSelectedQuestions(shuffled)
     setStartTime(Date.now())
   }, [questions])
+
+  // ---------------- AUTO READ QUESTION ----------------
+  useEffect(() => {
+    if (!selectedQuestions.length || finished) return
+
+    const question = selectedQuestions[currentIndex]
+    if (!question) return
+
+    speak(question.question)
+  }, [currentIndex, selectedQuestions, finished])
 
   // ---------------- SAVE PROGRESS ----------------
   useEffect(() => {
@@ -101,6 +125,7 @@ export default function QuizClient({
   useEffect(() => {
     if (!finished || resultSaved) return
 
+    window.speechSynthesis.cancel()
     submitResult()
     setResultSaved(true)
     localStorage.removeItem(QUIZ_STORAGE_KEY)
@@ -108,6 +133,8 @@ export default function QuizClient({
 
   // ---------------- QUIT QUIZ ----------------
   function quitQuiz() {
+    window.speechSynthesis.cancel()
+
     const confirmQuit = window.confirm(
       "Are you sure you want to quit? Your progress will be lost."
     )
@@ -142,6 +169,8 @@ export default function QuizClient({
   }
 
   function nextQuestion() {
+    window.speechSynthesis.cancel()
+
     if (currentIndex < selectedQuestions.length - 1) {
       setCurrentIndex(i => i + 1)
     } else {
@@ -150,6 +179,8 @@ export default function QuizClient({
   }
 
   function previousQuestion() {
+    window.speechSynthesis.cancel()
+
     if (currentIndex > 0) {
       setCurrentIndex(i => i - 1)
     }
