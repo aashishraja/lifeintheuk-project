@@ -1,0 +1,269 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { Question } from "../generated/prisma/client"
+import { saveResult } from "./actions"
+
+const QUIZ_STORAGE_KEY = "quiz-progress"
+const QUESTION_COUNT = 24
+const DURATION_SECONDS = 45 * 60
+const PASS_MARK = 18
+
+export default function QuizClient({
+  questions,
+}: {
+  questions: Question[]
+}) {
+  const router = useRouter()
+
+  const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([])
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [answers, setAnswers] = useState<Record<number, string>>({})
+  const [finished, setFinished] = useState(false)
+
+  const [startTime, setStartTime] = useState<number | null>(null)
+  const [remainingTime, setRemainingTime] = useState(DURATION_SECONDS)
+
+  // ---------------- LOAD OR CREATE QUIZ ----------------
+  useEffect(() => {
+    const saved = localStorage.getItem(QUIZ_STORAGE_KEY)
+
+    if (saved) {
+      const parsed = JSON.parse(saved)
+
+      const restoredQuestions = parsed.selectedQuestionIds
+        .map((id: number) => questions.find(q => q.id === id))
+        .filter(Boolean)
+
+      if (restoredQuestions.length > 0) {
+        setSelectedQuestions(restoredQuestions)
+        setCurrentIndex(parsed.currentIndex)
+        setAnswers(parsed.answers)
+        setStartTime(parsed.startTime)
+        return
+      }
+    }
+
+    const shuffled = [...questions]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, QUESTION_COUNT)
+
+    setSelectedQuestions(shuffled)
+    setStartTime(Date.now())
+  }, [questions])
+
+  // ---------------- SAVE PROGRESS ----------------
+  useEffect(() => {
+    if (!startTime || selectedQuestions.length === 0) return
+
+    localStorage.setItem(
+      QUIZ_STORAGE_KEY,
+      JSON.stringify({
+        selectedQuestionIds: selectedQuestions.map(q => q.id),
+        currentIndex,
+        answers,
+        startTime,
+      })
+    )
+  }, [selectedQuestions, currentIndex, answers, startTime])
+
+  // ---------------- TIMER ----------------
+  useEffect(() => {
+    if (!startTime || finished) return
+
+    const interval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000)
+      const remaining = DURATION_SECONDS - elapsed
+
+      if (remaining <= 0) {
+        setRemainingTime(0)
+        setFinished(true)
+        clearInterval(interval)
+      } else {
+        setRemainingTime(remaining)
+      }
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [startTime, finished])
+
+  // ---------------- SAVE RESULT + CLEANUP ----------------
+  useEffect(() => {
+    if (finished) {
+      saveResult(score(), selectedQuestions.length)
+      localStorage.removeItem(QUIZ_STORAGE_KEY)
+    }
+  }, [finished])
+
+  if (selectedQuestions.length === 0) {
+    return <div className="p-6">Loading quiz...</div>
+  }
+
+  const currentQuestion = selectedQuestions[currentIndex]
+  const selectedAnswer = answers[currentQuestion.id]
+
+  function selectAnswer(option: string) {
+    setAnswers(prev => ({
+      ...prev,
+      [currentQuestion.id]: option,
+    }))
+  }
+
+  function nextQuestion() {
+    if (currentIndex < selectedQuestions.length - 1) {
+      setCurrentIndex(i => i + 1)
+    } else {
+      setFinished(true)
+    }
+  }
+
+  function previousQuestion() {
+    if (currentIndex > 0) {
+      setCurrentIndex(i => i - 1)
+    }
+  }
+
+  function goToMenu() {
+    router.push("/")
+  }
+
+  function score() {
+    return selectedQuestions.filter(
+      q => answers[q.id] === q.answer
+    ).length
+  }
+
+  function passed() {
+    return score() >= PASS_MARK
+  }
+
+  function formatTime(seconds: number) {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${String(secs).padStart(2, "0")}`
+  }
+
+  // ---------------- FINISHED VIEW ----------------
+  if (finished) {
+    return (
+      <div className="p-4 md:p-8 space-y-4 max-w-3xl mx-auto">
+        <button onClick={goToMenu} className="underline">
+          ← Back to menu
+        </button>
+
+        <h2 className="text-xl md:text-2xl font-bold">
+          Score: {score()} / {selectedQuestions.length}
+        </h2>
+
+        <p className="text-lg">
+          Time remaining: {formatTime(remainingTime)}
+        </p>
+
+        <p
+          className={`text-xl font-bold ${
+            passed() ? "text-green-600" : "text-red-600"
+          }`}
+        >
+          {passed() ? "PASS" : "FAIL"}
+        </p>
+
+        {selectedQuestions.map((q, i) => {
+          const userAnswer = answers[q.id]
+          const correct = userAnswer === q.answer
+
+          return (
+            <div key={q.id} className="border p-4 rounded">
+              <p className="font-semibold">
+                {i + 1}. {q.question}
+              </p>
+
+              <p className={correct ? "text-green-600" : "text-red-600"}>
+                Your answer: {userAnswer ?? "No answer"}
+              </p>
+
+              {!correct && (
+                <p className="text-green-600">
+                  Correct answer: {q.answer}
+                </p>
+              )}
+
+              {q.answerDesc && (
+                <p className="text-sm text-gray-500">
+                  {q.answerDesc}
+                </p>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
+  // ---------------- QUESTION VIEW ----------------
+  return (
+    <div className="flex flex-col md:flex-row h-full">
+      {/* QUESTION */}
+      <div className="md:w-1/2 p-4 md:p-8 border-b md:border-b-0 md:border-r flex flex-col gap-4">
+        <p className="text-sm font-medium text-red-600">
+          Time remaining: {formatTime(remainingTime)}
+        </p>
+
+        <p className="text-sm text-gray-500">
+          Question {currentIndex + 1} of {selectedQuestions.length}
+        </p>
+
+        <h1 className="text-xl md:text-2xl font-semibold">
+          {currentQuestion.question}
+        </h1>
+
+        <div className="flex flex-col sm:flex-row gap-2 sm:justify-between mt-auto">
+          <button
+            onClick={previousQuestion}
+            disabled={currentIndex === 0}
+            className="px-4 py-2 border rounded disabled:opacity-50"
+          >
+            Back
+          </button>
+
+          <button
+            onClick={goToMenu}
+            className="px-4 py-2 border rounded"
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+
+      {/* ANSWERS */}
+      <div className="md:w-1/2 p-4 md:p-8 flex flex-col gap-6">
+        <ul className="space-y-3">
+          {currentQuestion.options.map(option => (
+            <li key={option}>
+              <label className="flex items-center gap-3 p-3 border rounded cursor-pointer active:bg-gray-100">
+                <input
+                  type="radio"
+                  name={`q-${currentQuestion.id}`}
+                  checked={selectedAnswer === option}
+                  onChange={() => selectAnswer(option)}
+                  className="scale-125"
+                />
+                <span className="text-base">{option}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          onClick={nextQuestion}
+          disabled={!selectedAnswer}
+          className="mt-auto px-6 py-3 bg-black text-white rounded disabled:opacity-50"
+        >
+          {currentIndex === selectedQuestions.length - 1
+            ? "Finish"
+            : "Next"}
+        </button>
+      </div>
+    </div>
+  )
+}
