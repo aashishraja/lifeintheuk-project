@@ -115,12 +115,19 @@ export default function QuizClient({
 
   // ---------------- SAVE RESULT ----------------
   async function submitResult() {
-    try {
-      await saveResult(score(), selectedQuestions.length)
-    } catch (err) {
-      console.error("Failed to save quiz result", err)
-    }
+  try {
+    await fetch("/api/save-result", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        score: score(),
+        total: selectedQuestions.length,
+      }),
+    })
+  } catch (err) {
+    console.error("Failed to save quiz result", err)
   }
+}
 
   useEffect(() => {
     if (!finished || resultSaved) return
