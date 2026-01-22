@@ -220,7 +220,7 @@ export default function QuizClient({
   if (finished) {
     return (
       <div className="p-4 md:p-8 space-y-4 max-w-3xl mx-auto">
-        <button onClick={() => router.push("/app")} className="underline">
+        <button onClick={() => router.push("/")} className="underline">
           ← Back to menu
         </button>
 
