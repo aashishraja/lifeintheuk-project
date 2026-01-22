@@ -122,7 +122,8 @@ export default function QuizClient({
           score: score(),
           total: selectedQuestions.length,
         }),
-      })
+      })// Optionally update local state if you want to show DB-refreshed info
+    
     } catch (err) {
       console.error("Failed to save quiz result", err)
     }
