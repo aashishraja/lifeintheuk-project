@@ -3,7 +3,8 @@ import prisma from "@/lib/prisma"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-  try {
+  console.log("API route /api/save-result called")
+    try {
     const body = await req.json()
     const { score, total } = body
 

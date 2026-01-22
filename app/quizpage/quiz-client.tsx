@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import type { Question } from "../generated/prisma/client"
-import { saveResult } from "./actions"
 
 const QUIZ_STORAGE_KEY = "quiz-progress"
 const QUESTION_COUNT = 24
@@ -115,27 +114,35 @@ export default function QuizClient({
 
   // ---------------- SAVE RESULT ----------------
   async function submitResult() {
-  try {
-    await fetch("/api/save-result", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        score: score(),
-        total: selectedQuestions.length,
-      }),
-    })
-  } catch (err) {
-    console.error("Failed to save quiz result", err)
+    try {
+      await fetch("/api/save-result", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          score: score(),
+          total: selectedQuestions.length,
+        }),
+      })
+    } catch (err) {
+      console.error("Failed to save quiz result", err)
+    }
   }
-}
 
   useEffect(() => {
     if (!finished || resultSaved) return
 
     window.speechSynthesis.cancel()
-    submitResult()
-    setResultSaved(true)
-    localStorage.removeItem(QUIZ_STORAGE_KEY)
+
+    // async IIFE so we can await submitResult
+    ;(async () => {
+      try {
+        await submitResult()
+        setResultSaved(true)
+        localStorage.removeItem(QUIZ_STORAGE_KEY)
+      } catch (err) {
+        console.error("Error saving result:", err)
+      }
+    })()
   }, [finished, resultSaved])
 
   // ---------------- QUIT QUIZ ----------------
@@ -291,14 +298,13 @@ export default function QuizClient({
           </button>
 
           <button
-  onClick={quitQuiz}
-  className="relative px-8 py-3 bg-black text-white font-semibold rounded-lg border-2 border-purple-500 hover:border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_10px_rgba(168,85,247,0.6)] active:scale-95 active:shadow-[0_0_10px_5px_rgba(168,85,247,0.4)] group"
->
-  <span className="relative z-10">Menu</span>
+            onClick={quitQuiz}
+            className="relative px-8 py-3 bg-black text-white font-semibold rounded-lg border-2 border-purple-500 hover:border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_10px_rgba(168,85,247,0.6)] active:scale-95 active:shadow-[0_0_10px_5px_rgba(168,85,247,0.4)] group"
+          >
+            <span className="relative z-10">Menu</span>
 
-  <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-r from-purple-500/20 to-indigo-500/20" />
-</button>
-
+            <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-r from-purple-500/20 to-indigo-500/20" />
+          </button>
         </div>
       </div>
 
