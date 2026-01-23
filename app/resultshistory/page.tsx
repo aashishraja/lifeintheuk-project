@@ -1,7 +1,10 @@
 
-'use server'
+
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
+export const dynamic = "force-dynamic"
+
+
 export default async function ResultsHistory() {
   const results = await prisma.quizResult.findMany({
     orderBy: { createdAt: "desc" },
