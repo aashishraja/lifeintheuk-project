@@ -1,11 +1,11 @@
 
 import prisma from "@/lib/prisma"
-
+import { revalidatePath } from "next/cache";
 export default async function ResultsHistory() {
   const results = await prisma.quizResult.findMany({
     orderBy: { createdAt: "desc" },
   })
-
+  revalidatePath("/resultshistory");
   return (
     <main className="p-8 max-w-xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">
