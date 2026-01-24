@@ -1,6 +1,7 @@
 // app/api/save-result/route.ts
 import prisma from "@/lib/prisma"
 import { NextRequest, NextResponse } from "next/server"
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
   console.log("API route /api/save-result called")
@@ -14,6 +15,7 @@ export async function POST(req: NextRequest) {
         total,
       },
     })
+    revalidatePath("/resultshistory");
 
     return NextResponse.json(result)
   } catch (err) {
