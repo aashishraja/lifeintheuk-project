@@ -6,9 +6,9 @@ export default function Home() {
   const router = useRouter()
 
   return (
-    <main className="h-screen flex flex-row">
+    <main className="h-screen flex md:flex-row flex-col">
       <div className="basis-1/2 flex flex-col bg-primary">
-        <div className="basis-2/3 p-8 flex items-end justify-start text-5xl font-main text-secondary">
+        <div className="basis-2/3 p-8 flex md:items-end md:justify-start md:text-5xl font-main text-secondary text-2xl justify-left">
         Welcome To <br /> Life In The UK <br /> Practice
         </div>
         <div className="basis-1/3 p-8">
