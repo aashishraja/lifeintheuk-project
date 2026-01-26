@@ -308,10 +308,11 @@ export default function QuizClient({
         <h1 className="text-xl md:text-2xl font-main">
           {currentQuestion.question}
         </h1>
-
+        <div className="flex items-center justify-start">
         <button
         onClick={repeatQuestion}
-        className="p-2
+        className="w-40
+      px-2 py-3
       bg-transparent
       text-secondary
       font-secondary
@@ -323,6 +324,7 @@ export default function QuizClient({
       hover:border-secondary">
           Repeat Question
         </button>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-2 sm:justify-between mt-auto">
   <button
