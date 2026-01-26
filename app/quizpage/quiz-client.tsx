@@ -264,8 +264,8 @@ export default function QuizClient({
           const correct = userAnswer === q.answer
 
           return (
-            <div key={q.id} className="border p-4 rounded">
-              <p className="font-semibold">
+            <div key={q.id} className="border-2 p-4 rounded border-secondary">
+              <p className="font-secondary">
                 {i + 1}. {q.question}
               </p>
 
