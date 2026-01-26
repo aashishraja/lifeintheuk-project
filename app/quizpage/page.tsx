@@ -5,7 +5,7 @@ export default async function QuizPage() {
   const questions = await prisma.question.findMany()
 
   return (
-    <main className="h-screen">
+    <main className="h-screen bg-primary">
       <QuizClient questions={questions} />
     </main>
   )

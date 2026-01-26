@@ -39,6 +39,19 @@ export default function QuizClient({
     window.speechSynthesis.speak(utterance)
   }
 
+  function repeatQuestion() {
+    const question = selectedQuestions[currentIndex]
+    if (!question) return
+
+    const optionsText = question.options
+      .map((opt, i) => `Option ${i + 1}. ${opt}.`)
+      .join(" ")
+
+    speak(`${question.question}. ${optionsText}`)
+  }
+
+
+
   // ---------------- LOAD OR CREATE QUIZ ----------------
   useEffect(() => {
     const saved = localStorage.getItem(QUIZ_STORAGE_KEY)
@@ -74,7 +87,11 @@ export default function QuizClient({
     const question = selectedQuestions[currentIndex]
     if (!question) return
 
-    speak(question.question)
+  const optionsText = question.options
+    .map((opt, i) => `Option ${i + 1}. ${opt}.`)
+    .join(" ")
+
+  speak(`${question.question}. ${optionsText}`)
   }, [currentIndex, selectedQuestions, finished])
 
   // ---------------- SAVE PROGRESS ----------------
@@ -220,7 +237,8 @@ export default function QuizClient({
   // ---------------- FINISHED VIEW ----------------
   if (finished) {
     return (
-      <div className="p-4 md:p-8 space-y-4 max-w-3xl mx-auto">
+      <div className="min-h-screen bg-primary">
+      <div className="p-4 md:p-8 space-y-4 max-w-3xl mx-auto font-secondary">
         <button onClick={() => router.push("/")} className="underline">
           ← Back to menu
         </button>
@@ -270,67 +288,137 @@ export default function QuizClient({
           )
         })}
       </div>
+      </div>
     )
+    
   }
 
   // ---------------- QUESTION VIEW ----------------
   return (
-    <div className="flex flex-col md:flex-row h-full">
+    <div className="flex flex-col md:flex-row h-full bg-primary">
       <div className="md:w-1/2 p-4 md:p-8 border-b md:border-b-0 md:border-r flex flex-col gap-4">
-        <p className="text-sm font-medium text-red-600">
+        <p className="text-sm font-medium text-secondary">
           Time remaining: {formatTime(remainingTime)}
         </p>
 
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-secondary">
           Question {currentIndex + 1} of {selectedQuestions.length}
         </p>
 
-        <h1 className="text-xl md:text-2xl font-semibold">
+        <h1 className="text-xl md:text-2xl font-main">
           {currentQuestion.question}
         </h1>
 
+        <button
+        onClick={repeatQuestion}
+        className="p-2
+      bg-transparent
+      text-secondary
+      font-secondary
+      rounded-lg
+      border-2 border-secondary
+      transition-all duration-200
+      hover:bg-secondary
+      hover:text-primary
+      hover:border-secondary">
+          Repeat Question
+        </button>
+
         <div className="flex flex-col sm:flex-row gap-2 sm:justify-between mt-auto">
-          <button
-            onClick={previousQuestion}
-            disabled={currentIndex === 0}
-            className="relative px-8 py-3 bg-black text-white font-semibold rounded-lg border-2 border-purple-500 hover:border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_10px_rgba(168,85,247,0.6)] active:scale-95 active:shadow-[0_0_10px_5px_rgba(168,85,247,0.4)] group disabled:opacity-50"
-          >
-            Back
-          </button>
+  <button
+    onClick={previousQuestion}
+    disabled={currentIndex === 0}
+    className="
+      w-40
+      px-8 py-3
+      bg-transparent
+      text-secondary
+      font-secondary
+      rounded-lg
+      border-2 border-secondary
+      transition-all duration-200
+      hover:bg-secondary
+      hover:text-primary
+      hover:border-secondary
+      disabled:opacity-50
+      disabled:hover:bg-transparent
+      disabled:hover:text-white
+      disabled:hover:border-white
+    "
+  >
+    Back
+  </button>
 
-          <button
-            onClick={quitQuiz}
-            className="relative px-8 py-3 bg-black text-white font-semibold rounded-lg border-2 border-purple-500 hover:border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_10px_rgba(168,85,247,0.6)] active:scale-95 active:shadow-[0_0_10px_5px_rgba(168,85,247,0.4)] group"
-          >
-            <span className="relative z-10">Menu</span>
-
-            <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-r from-purple-500/20 to-indigo-500/20" />
-          </button>
-        </div>
+  <button
+    onClick={quitQuiz}
+    className="
+      w-40
+      px-8 py-3
+      bg-transparent
+      text-secondary
+      font-secondary
+      rounded-lg
+      border-2 border-secondary
+      transition-all duration-200
+      hover:bg-secondary
+      hover:text-primary
+      hover:border-secondary
+    "
+  >
+    Menu
+  </button>
+</div>
       </div>
 
       <div className="md:w-1/2 p-4 md:p-8 flex flex-col gap-6">
         <ul className="space-y-3">
           {currentQuestion.options.map((option: string) => (
             <li key={option}>
-              <label className="flex items-center gap-3 p-3 border rounded cursor-pointer active:bg-gray-100">
+              <label className="cursor-pointer">
                 <input
-                  type="radio"
-                  name={`q-${currentQuestion.id}`}
-                  checked={selectedAnswer === option}
-                  onChange={() => selectAnswer(option)}
-                  className="scale-125"
+                type="radio"
+                name={`q-${currentQuestion.id}`}
+                checked={selectedAnswer === option}
+                onChange={() => selectAnswer(option)}
+                className="peer sr-only"
                 />
-                <span className="text-base">{option}</span>
+
+                <div
+                  className="
+                    flex items-center gap-3 p-3 border-2 border-secondary rounded
+                    transition-all duration-150
+                    peer-checked:bg-white
+                    peer-checked:text-primary
+                    peer-checked:border-secondary
+                    hover:bg-secondary
+                    hover:text-primary
+                    hover:border-secondary
+                    
+                  "
+                >
+                  <span className="text-base font-secondary">{option}</span>
+                </div>
               </label>
             </li>
+
           ))}
         </ul>
 
         <button
           onClick={nextQuestion}
           disabled={!selectedAnswer}
-          className="mt-auto px-6 py-3 bg-black text-white rounded disabled:opacity-50"
+          className="mt-auto px-6 py-3 bg-transparent
+      text-secondary
+      font-secondary
+      rounded-lg
+      border-2 border-secondary
+      transition-all duration-200
+      hover:bg-secondary
+      hover:text-primary
+      hover:border-secondary disabled:opacity-50
+      disabled:hover:bg-transparent
+      disabled:hover:text-white
+      disabled:hover:border-white"
         >
           {currentIndex === selectedQuestions.length - 1
             ? "Finish"
